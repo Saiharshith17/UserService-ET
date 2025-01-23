@@ -18,6 +18,9 @@ import lombok.NoArgsConstructor;
 public class UserInfoDto {
     Long id;
 
+
+
+
     @Id
     private String userId;
 
