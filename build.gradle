@@ -16,7 +16,9 @@ java {
 repositories {
 	mavenCentral()
 }
-
+ext{
+	lombokVersion ="1.18.36"
+}
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter:3.4.1'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test:3.4.1'
@@ -25,7 +27,12 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok:1.18.36'
 	implementation 'org.springframework.kafka:spring-kafka:3.3.0'
 	implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.1'
-     // lombok dependencies should be added
+	implementation 'org.springframework.boot:spring-boot-starter'
+
+	annotationProcessor 'org.projectlombok:lombok:1.18.36'
+
+	testCompileOnly 'org.projectlombok:lombok:1.18.36'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.36'
 }
 
 
