@@ -33,7 +33,7 @@ public class UserInfoDto {
     @JsonProperty("profile_pic")
     private String profilePic;
 
-    public static UserInfo  transformToUserInfo(){
+    public UserInfo  transformToUserInfo(){
        return UserInfo.builder().firstName(firstName).lastName(lastName).email(email).phoneNumber(phoneNumber).profilePic(profilePic).build();
     }
 }
