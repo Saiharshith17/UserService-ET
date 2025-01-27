@@ -23,6 +23,7 @@ public class UserService {
 
         UserInfo userInfo=userRepository.findByUserId(userInfoDto.getUserId())
                 .map(updatingUser)
+                .orElseGet(createUser);
     }
 
 }
