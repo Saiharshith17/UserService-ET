@@ -5,6 +5,7 @@ import com.saiharshithhub.userservice.entities.UserInfoDto;
 import com.saiharshithhub.userservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
@@ -38,6 +39,13 @@ public class UserService {
         );
 
 
+    }
+    public UserInfoDto getUser(UserInfoDto userInfoDto) throws Exception{
+
+        Optional<UserInfo> userInfoOpt=userRepository.findByUserId(userInfoDto.getUserId());
+        if(userInfoOpt.isEmpty()){
+            throw new Exception("User Not found");
+        }
     }
 
 }
