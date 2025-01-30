@@ -5,47 +5,42 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
-@Getter
-@Setter
 @Entity
-@Builder
-@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties(ignoreUnknown=true)
+@Getter
+@Setter
+@Builder
+@Table(name = "users")
 public class UserInfo {
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Transient  //change in this part is taken and dont know that could effect the connection issue
     private Long id;
-
 
     @Id
     @JsonProperty("user_id")
-    @NonNull
+    @Column(nullable = false, unique = true)
     private String userId;
 
     @JsonProperty("first_name")
-    @NonNull
+    @Column(nullable = false, unique = true)
     private String firstName;// first_name is snakecase so we need to map them to camelcase (firstName)
 
 
     @JsonProperty("last_name")
-    @NonNull
+    @Column(nullable = false, unique = true)
     private String lastName;
 
 
     @JsonProperty("phone_number")
-    @NonNull
+    @Column(nullable = false, unique = true)
     private Long phoneNumber;
 
 
     @JsonProperty("email")
-    @NonNull
+    @Column(nullable = false, unique = true)
     private String email;
 
     @JsonProperty("profile_pic")
